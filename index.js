@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import {Login} from './src/component/Login';
+import NavHome from './src/component/Login';
 
-AppRegistry.registerComponent('Pigeon', () => Login);
+AppRegistry.registerComponent('Pigeon', () => NavHome);
