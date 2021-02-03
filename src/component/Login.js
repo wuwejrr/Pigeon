@@ -22,28 +22,6 @@ export class Login extends Component {
         };
         this.updatePW = this.updatePW.bind(this);
     }
-    componentWillMount(){
-        ws.apiws.onmessage = (msg)=>{
-            ToastAndroid.show(msg.data ,ToastAndroid.SHORT);
-            console.log(msg.data);
-        };
-        // this.apiws = new WebSocket('ws://139.199.160.146:8080');
-        // this.apiws.onopen = ()=>{
-        //     console.log('on open is called');
-        //     console.log('websocket is open:' + this.apiws.readyState);
-        // };
-        // this.apiws.onmessage = (msg)=>{
-        //     ToastAndroid.show(msg.data ,ToastAndroid.SHORT);
-        //     console.log(msg.data);
-        // };
-        // this.apiws.onclose = ()=>{
-        //     console.log('WebSocket connection closed');
-        // };
-        // this.apiws.onerror = (e)=>{
-        //     console.log('on error is called. error');
-        //     console.log(e);
-        // };
-    }
     // updateNum(inputedNum) {
     //   this.setState(() => {
     //     return {inputedNum};

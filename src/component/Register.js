@@ -12,11 +12,10 @@ export class Register extends Component {
         
     }
     componentWillMount(){
-        // apiws.ws.onmessage = (msg)=>{
-        //     ToastAndroid.show(msg.data ,ToastAndroid.SHORT);
-        //     console.log(msg.data);
-        // };
-        // this.apiws = new WebSocket('ws://139.199.160.146:8080');
+        ws.apiws.onmessage = (msg)=>{
+            ToastAndroid.show(msg.data ,ToastAndroid.SHORT);
+            console.log(msg.data);
+        };
         // this.apiws.onopen = ()=>{
         //     console.log('on open is called');
         //     console.log('websocket is open:' + this.apiws.readyState);
