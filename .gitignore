@@ -59,3 +59,6 @@ buck-out/
 # yarn
 #
 yarn.lock
+
+# config 
+#src/config.json
