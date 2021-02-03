@@ -10,7 +10,7 @@ import { Text,
         ToastAndroid } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { Register } from './Register';
-//import {apiws} from '../apiws';
+import {ws} from '../wsconnect';
 
 let widthOfMargin = Dimensions.get('window').width * 0.03;
 export class Login extends Component {
@@ -23,10 +23,10 @@ export class Login extends Component {
         this.updatePW = this.updatePW.bind(this);
     }
     componentWillMount(){
-        // apiws.ws.onmessage = (msg)=>{
-        //     ToastAndroid.show(msg.data ,ToastAndroid.SHORT);
-        //     console.log(msg.data);
-        // };
+        ws.apiws.onmessage = (msg)=>{
+            ToastAndroid.show(msg.data ,ToastAndroid.SHORT);
+            console.log(msg.data);
+        };
         // this.apiws = new WebSocket('ws://139.199.160.146:8080');
         // this.apiws.onopen = ()=>{
         //     console.log('on open is called');
@@ -58,7 +58,6 @@ export class Login extends Component {
         ToastAndroid.show('点我了',ToastAndroid.SHORT);
     };
     render() {
-        // const { navigate } = this.props.navigation;
         return (
             <View style={styles.container}>
                 <TextInput style={styles.textInputStyle} 
@@ -99,6 +98,11 @@ export default NavHome = StackNavigator({
 },
 {
     navigationOptions:{
+        gesturesEnabled: true,
+        gestureResponseDistance: {
+            vertical: 150,
+            horizontal: 150
+        } ,
         //header:null,
         headerBackTitle:null,  
         headerTintColor:'#333333',  
