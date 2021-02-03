@@ -9,7 +9,8 @@ import { Text,
         Button, 
         ToastAndroid } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import { Register } from './app/register';
+import { Register } from './Register';
+//import {apiws} from '../apiws';
 
 let widthOfMargin = Dimensions.get('window').width * 0.03;
 export class Login extends Component {
@@ -20,6 +21,28 @@ export class Login extends Component {
             inputedPW:''
         };
         this.updatePW = this.updatePW.bind(this);
+    }
+    componentWillMount(){
+        // apiws.ws.onmessage = (msg)=>{
+        //     ToastAndroid.show(msg.data ,ToastAndroid.SHORT);
+        //     console.log(msg.data);
+        // };
+        // this.apiws = new WebSocket('ws://139.199.160.146:8080');
+        // this.apiws.onopen = ()=>{
+        //     console.log('on open is called');
+        //     console.log('websocket is open:' + this.apiws.readyState);
+        // };
+        // this.apiws.onmessage = (msg)=>{
+        //     ToastAndroid.show(msg.data ,ToastAndroid.SHORT);
+        //     console.log(msg.data);
+        // };
+        // this.apiws.onclose = ()=>{
+        //     console.log('WebSocket connection closed');
+        // };
+        // this.apiws.onerror = (e)=>{
+        //     console.log('on error is called. error');
+        //     console.log(e);
+        // };
     }
     // updateNum(inputedNum) {
     //   this.setState(() => {
@@ -35,6 +58,7 @@ export class Login extends Component {
         ToastAndroid.show('点我了',ToastAndroid.SHORT);
     };
     render() {
+        // const { navigate } = this.props.navigation;
         return (
             <View style={styles.container}>
                 <TextInput style={styles.textInputStyle} 
@@ -55,7 +79,7 @@ export class Login extends Component {
                 <Button color='blue'
                     title='注册' 
                     onPress={() =>
-                        this.props.navigation.navigate('Register', { name: 'Jane' })
+                        this.props.navigation.navigate('Register')
                     }/>
             </View>
         );
@@ -65,16 +89,15 @@ export class Login extends Component {
 export default NavHome = StackNavigator({
     Login:{
         screen: Login,
-        navigationOptions :{  
+        navigationOptions :{
             header:null,  
         },
     },
     Register:{
         screen: Register,
     },
-    
 },
-{  
+{
     navigationOptions:{
         //header:null,
         headerBackTitle:null,  
@@ -82,7 +105,7 @@ export default NavHome = StackNavigator({
         gesturesEnabled:true,
     },
     mode:'card',  
-  });
+});
 
 //样式
 const styles = StyleSheet.create({
