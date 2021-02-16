@@ -1,7 +1,8 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import Register from '../component/Register';
-import Login from '../component/Login'
+import Login from '../component/Login';
+import TabNav from './TabNav';
 
 export default NavHome = StackNavigator({
     Login:{
@@ -13,6 +14,12 @@ export default NavHome = StackNavigator({
     Register:{
         screen: Register,
     },
+    TabNav:{
+        screen: TabNav,
+        navigationOptions :{
+            header:null,
+        },
+    }
 },
 {
     navigationOptions:{

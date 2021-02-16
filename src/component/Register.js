@@ -34,6 +34,7 @@ export default class Register extends Component {
     registerUser(){
         //console.log(this.apiws.readyState);
         ws.apiws.send('hello');
+        this.props.navigation.navigate('TabNav');
     }
     render() {
         return(

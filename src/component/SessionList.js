@@ -1,10 +1,12 @@
 import React,{ Component } from 'react';
-import { View } from 'react-native';
+import { View,Text } from 'react-native';
 
 export default class SessionList extends Component{
     render() {
         return(
-            <View></View>
+            <View>
+                <Text>1233333333333333333333333333333333333333333333333333333</Text>
+            </View>
         );
     }
 }
