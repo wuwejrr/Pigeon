@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { View, Button, ToastAndroid,Text } from 'react-native';
 //import WSconnection from './websocket';
-//import {apiws} from '../apiws';
+import {ws} from '../wsconnect';
 
 
-export class Register extends Component {
+export default class Register extends Component {
     constructor(props){
         super(props);
         this.apiws = null;
@@ -12,32 +12,28 @@ export class Register extends Component {
         
     }
     componentWillMount(){
+        ws.apiws.onopen = ()=>{
+            console.log('on open is called');
+            console.log('websocket is open:' + this.apiws.readyState);
+        }
         ws.apiws.onmessage = (msg)=>{
             ToastAndroid.show(msg.data ,ToastAndroid.SHORT);
             console.log(msg.data);
         };
-        // this.apiws.onopen = ()=>{
-        //     console.log('on open is called');
-        //     console.log('websocket is open:' + this.apiws.readyState);
-        // };
-        // this.apiws.onmessage = (msg)=>{
-        //     ToastAndroid.show(msg.data ,ToastAndroid.SHORT);
-        //     console.log(msg.data);
-        // };
-        // this.apiws.onclose = ()=>{
-        //     console.log('WebSocket connection closed');
-        // };
-        // this.apiws.onerror = (e)=>{
-        //     console.log('on error is called. error');
-        //     console.log(e);
-        // };
+        ws.apiws.onerror = (e)=>{
+            console.log('on error is called. error');
+            console.log(e);
+        };
+        ws.apiws.onclose = ()=>{
+            console.log('WebSocket connection closed');
+        };
     }
-    componentWillUnmount(){
-        this.apiws.close(1000, 'Closing normally');
-    }
+    // componentWillUnmount(){
+    //     this.apiws.close(1000, 'Closing normally');
+    // }
     registerUser(){
         //console.log(this.apiws.readyState);
-        this.apiws.send('hello');
+        ws.apiws.send('hello');
     }
     render() {
         return(
@@ -46,7 +42,7 @@ export class Register extends Component {
                         this.props.navigation.navigate('Login', { name: 'Jane' })} 
                         title={'Go Back'} />
                 <Text> </Text>
-                <Button onPress={this.registerUser} 
+                <Button onPress={this.registerUser}
                         title={'注册'}/>
             </View>
         );
