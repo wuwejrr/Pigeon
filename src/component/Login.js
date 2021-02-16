@@ -8,12 +8,12 @@ import { Text,
         TextInput, 
         Button, 
         ToastAndroid } from 'react-native';
-import { StackNavigator } from 'react-navigation';
-import { Register } from './Register';
+//import { StackNavigator } from 'react-navigation';
+import NavHome from '../navigator/NavHome';
 import {ws} from '../wsconnect';
 
 let widthOfMargin = Dimensions.get('window').width * 0.03;
-export class Login extends Component {
+export default class Login extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -62,32 +62,6 @@ export class Login extends Component {
         );
     }
 }
-//导航
-export default NavHome = StackNavigator({
-    Login:{
-        screen: Login,
-        navigationOptions :{
-            header:null,  
-        },
-    },
-    Register:{
-        screen: Register,
-    },
-},
-{
-    navigationOptions:{
-        gesturesEnabled: true,
-        gestureResponseDistance: {
-            vertical: 150,
-            horizontal: 150
-        } ,
-        //header:null,
-        headerBackTitle:null,  
-        headerTintColor:'#333333',  
-        gesturesEnabled:true,
-    },
-    mode:'card',  
-});
 
 //样式
 const styles = StyleSheet.create({
