@@ -38,26 +38,27 @@ export default class Login extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <TextInput style={styles.textInputStyle} 
-                    placeholder={'请输入手机号'}
-                    /*onChangeText = {(newText) => this.updateNum(newText)}*/
-                    onChangeText = {(inputedNum) => this.setState({inputedNum})} />
-                <Text style={styles.textPromptStyle}>
-                    您输入的手机号：{this.state.inputedNum}
-                </Text>
-                <TextInput style={styles.textInputStyle} 
-                    placeholder={'请输入密码'} 
-                    secureTextEntry
-                    onChangeText={this.updatePW}/>
-                <Button color='blue'
-                    title='确定' 
-                    onPress={this.onButtonPress}/>
-                <Text> </Text>
-                <Button color='blue'
-                    title='注册' 
-                    onPress={() =>
-                        this.props.navigation.navigate('Register')
-                    }/>
+                <View style={styles.inputArea}>
+                    <TextInput style={styles.textInputStyle}
+                        placeholder={'请输入用户名'} />
+                    <TextInput style={styles.textInputStyle}
+                        placeholder={'请输入密码'}
+                        secureTextEntry
+                        onChangeText={this.updatePW}/>
+                </View>
+                <View style={styles.bottonArea}>
+                    <Text> </Text>
+                    <Button 
+                        style={styles.bottonStyle}
+                        title='确定'
+                        onPress={this.onButtonPress}/>
+                    <Text> </Text>
+                    <Button
+                        title='注册'
+                        onPress={() =>
+                            this.props.navigation.navigate('Register')
+                        }/>
+                </View>
             </View>
         );
     }
@@ -71,17 +72,30 @@ const styles = StyleSheet.create({
         // alignItems: 'center',
         backgroundColor: '#F5FCFF',
     },
+    inputArea: {
+        flexDirection: 'column',
+        marginTop: widthOfMargin*12,
+        //justifyContent: 'space-around',
+    },
+    bottonArea: {
+        padding: widthOfMargin,
+        justifyContent: 'space-around',
+    },
     textInputStyle: {
-        margin: widthOfMargin,
-        backgroundColor: 'gray',
-        fontSize: 20
+        marginLeft: widthOfMargin*2,
+        marginRight: widthOfMargin*2,
+        //margin: widthOfMargin,
+        marginTop:0,
+        marginBottom:0,
+        //backgroundColor: 'gray',
+        fontSize: 16,
     },
-    textPromptStyle: {
-        margin: widthOfMargin,
-        padding: 0,
-        fontSize: 20
-    },
-    bigTextPrompt: {
-        margin: widthOfMargin,
+    bottonStyle:{
+        fontSize: 20,
     }
+    // textPromptStyle: {
+    //     margin: widthOfMargin,
+    //     padding: 0,
+    //     fontSize: 20
+    // },
 });

@@ -7,6 +7,10 @@ import {ws} from '../wsconnect';
 export default class Register extends Component {
     constructor(props){
         super(props);
+        this.state = {
+            inputedNum:'',
+            inputedPW:''
+        };
         this.apiws = null;
         this.registerUser = this.registerUser.bind(this);
         
@@ -39,8 +43,16 @@ export default class Register extends Component {
     render() {
         return(
             <View>
+                <View style={styles.inputArea}>
+                    <TextInput style={styles.textInputStyle}
+                        placeholder={'请输入用户名'} />
+                    <TextInput style={styles.textInputStyle}
+                        placeholder={'请输入密码'}
+                        secureTextEntry
+                        onChangeText={this.updatePW}/>
+                </View>
                 <Button onPress={() =>
-                        this.props.navigation.navigate('Login', { name: 'Jane' })} 
+                        this.props.navigation.navigate('Login')} 
                         title={'Go Back'} />
                 <Text> </Text>
                 <Button onPress={this.registerUser}
