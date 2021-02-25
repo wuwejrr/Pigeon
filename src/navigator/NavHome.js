@@ -1,7 +1,7 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
-import Register from '../component/Register';
-import Login from '../component/Login';
+import Register from '../page/Register';
+import Login from '../page/Login';
 import TabNav from './TabNav';
 
 export default NavHome = StackNavigator({

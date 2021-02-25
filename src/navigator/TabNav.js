@@ -1,7 +1,7 @@
 import React from 'react';
 import { TabNavigator } from 'react-navigation';
-import SessionList from '../component/SessionList';
-import FriendList from '../component/FriendList';
+import SessionList from '../page/SessionList';
+import FriendList from '../page/FriendList';
 
 export default TabNav = TabNavigator({
     SessionList:{ 
