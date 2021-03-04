@@ -4,6 +4,7 @@ import Register from '../page/Register';
 import Login from '../page/Login';
 import TabNav from './TabNav';
 
+
 export default NavHome = StackNavigator({
     Login:{
         screen: Login,
@@ -13,6 +14,13 @@ export default NavHome = StackNavigator({
     },
     Register:{
         screen: Register,
+        navigationOptions:{
+            headerTitle: '注册',
+            headerStyle:{
+                height:35,
+                elevation: 0,//阴影
+            }
+        }
     },
     TabNav:{
         screen: TabNav,
@@ -29,8 +37,8 @@ export default NavHome = StackNavigator({
             horizontal: 150
         } ,
         //header:null,
-        headerBackTitle:null,  
-        headerTintColor:'#333333',  
+        headerBackTitle:null,
+        //headerTintColor:'#333333',
         gesturesEnabled:true,
     },
     mode:'card',  
