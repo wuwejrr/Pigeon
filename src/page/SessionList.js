@@ -1,12 +1,39 @@
-import React,{ Component } from 'react';
-import { View,Text } from 'react-native';
+import React,{ PureComponent } from 'react';
+import { View,Text,FlatList } from 'react-native';
+import { SessionListItem } from '../component/SessionListItem';
 
-export default class SessionList extends Component{
+export default class SessionList extends PureComponent{
+    constructor(props){
+        super(props);
+        //this.clickItem = this.clickItem.bind(this);
+    }
+    keyExtractor = (item, index) => index;
+
+    clickItem= (index,name) =>{
+        // alert(index+"+"+name)
+        this.props.navigation.navigate('ChatPage');
+    }
+    renderItem = ({item}) => (
+        <SessionListItem
+            onPressItem={this.clickItem}
+            //id={item.id}
+            username={item.username}
+        />
+    );
     render() {
         return(
-            <View>
-                <Text>1233333333333333333333333333333333333333333333333333333</Text>
-            </View>
+            <FlatList
+                keyExtractor={ this.keyExtractor }
+                data={[
+                    {username: 'Devin'},
+                ]}
+                renderItem={ this.renderItem }
+                />
         );
     }
 }
+
+
+// const styles = StyleSheet.create({
+    
+// });
