@@ -24,6 +24,10 @@ export default class Register extends Component {
         ws.apiws.onmessage = (msg)=>{
             ToastAndroid.show(msg.data ,ToastAndroid.SHORT);
             console.log(msg.data);
+            var message = JSON.parse(msg.data);
+            if(message.code == 200){
+                this.props.navigation.navigate('Login');
+            }
         };
         ws.apiws.onerror = (e)=>{
             console.log('on error is called. error');
@@ -33,20 +37,16 @@ export default class Register extends Component {
             console.log('WebSocket connection closed');
         };
     }
-    // componentWillUnmount(){
-    //     this.apiws.close(1000, 'Closing normally');
-    // }
     registerUser(){
         var username = this.state.inputedNum;
         var password = this.state.inputedPW;
         var jsonstr = { "username": username, "password": password};
         //apiutil('api','register',jsonstr);
         ws.apiws.send(apiutil('api','register',jsonstr));
-        this.props.navigation.navigate('TabNav');
     }
     render() {
         return(
-            <View>
+            <View style={styles.container}>
                 <View style={styles.inputArea}>
                     <TextInput style={styles.textInputStyle}
                         placeholder={'请输入用户名'} 
@@ -56,12 +56,14 @@ export default class Register extends Component {
                         secureTextEntry
                         onChangeText={(inputedPW)=>this.setState({inputedPW})}/>
                 </View>
-                <Button onPress={() =>
-                        this.props.navigation.navigate('Login')} 
-                        title={'Go Back'} />
-                <Text> </Text>
-                <Button onPress={this.registerUser}
-                        title={'注册'}/>
+                <View style={styles.bottonArea}>
+                    {/* <Button onPress={() =>
+                            this.props.navigation.navigate('Login')} 
+                            title={'Go Back'} /> */}
+                    <Text> </Text>
+                    <Button onPress={this.registerUser}
+                            title={'注册'}/>
+                </View>
             </View>
         );
     }
