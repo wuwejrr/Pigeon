@@ -21,14 +21,14 @@ export default class Register extends Component {
             console.log('on open is called');
             console.log('websocket is open:' + this.apiws.readyState);
         }
-        ws.apiws.onmessage = (msg)=>{
-            ToastAndroid.show(msg.data ,ToastAndroid.SHORT);
-            console.log(msg.data);
-            var message = JSON.parse(msg.data);
-            if(message.code == 200){
-                this.props.navigation.navigate('Login');
-            }
-        };
+        // ws.apiws.onmessage = (msg)=>{
+        //     ToastAndroid.show(msg.data ,ToastAndroid.SHORT);
+        //     console.log(msg.data);
+        //     var message = JSON.parse(msg.data);
+        //     if(message.code == 200){
+        //         this.props.navigation.navigate('Login');
+        //     }
+        // };
         ws.apiws.onerror = (e)=>{
             console.log('on error is called. error');
             console.log(e);
@@ -43,6 +43,15 @@ export default class Register extends Component {
         var jsonstr = { "username": username, "password": password};
         //apiutil('api','register',jsonstr);
         ws.apiws.send(apiutil('api','register',jsonstr));
+        ws.apiws.onmessage = (msg)=>{
+            //ToastAndroid.show(msg.data ,ToastAndroid.SHORT);
+            ToastAndroid.show("注册成功" ,ToastAndroid.LONG);
+            console.log(msg.data);
+            var message = JSON.parse(msg.data);
+            if(message.code == 200){
+                this.props.navigation.navigate('Login');
+            }
+        };
     }
     render() {
         return(
@@ -75,7 +84,7 @@ const styles = StyleSheet.create({
         flex: 1,
         //justifyContent: 'center',
         // alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        backgroundColor: '#f8fdff',
     },
     inputArea: {
         flexDirection: 'column',
