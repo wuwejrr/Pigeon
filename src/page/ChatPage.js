@@ -8,18 +8,16 @@ export default class ChatPage extends Component {
                 {
                     _id: 1,
                     text: 'Hello developer',
-                    avatar: require('../../assets/images/huaji.png'),
                     createdAt: new Date(),
                     user: {
                         _id: 2,
                         name: 'React Native',
-                        avatar: require('../../assets/images/huaji.png'),
+                        avatar: require('../../images/huaji.png'),
                     },
                 },
             ],
         })
     }
-    
     onSend(messages = []) {
         this.setState(previousState => ({
             messages: GiftedChat.append(previousState.messages, messages),
@@ -31,9 +29,12 @@ export default class ChatPage extends Component {
             <GiftedChat
                 messages={this.state.messages}
                 placeholder="请输入信息"
+                label="发送"
                 onSend={messages => this.onSend(messages)}
+                showUserAvatar={true}
                 user={{
                     _id: 1,
+                    avatar: require('../../images/huaji.png'),
                 }}
             />
         )
