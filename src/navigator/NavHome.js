@@ -1,9 +1,10 @@
 import React from 'react';
-import { StackNavigator } from 'react-navigation';
+import { StackNavigator,Button } from 'react-navigation';
 import Register from '../page/Register';
 import Login from '../page/Login';
-import TabNav from './TabNav';
-
+import MainPage from '../page/MainPage';
+import ChatPage from '../page/ChatPage';
+import AddFriend from '../page/AddFriend';
 
 export default NavHome = StackNavigator({
     Login:{
@@ -17,15 +18,50 @@ export default NavHome = StackNavigator({
         navigationOptions:{
             headerTitle: '注册',
             headerStyle:{
-                height:35,
+                backgroundColor: '#f8fdff',
+                height:40,
                 elevation: 0,//阴影
-            }
+            },
+            headerTitleStyle:{
+                alignSelf:'center'
+            },
+            headerRight:()=><Button></Button>,
         }
     },
-    TabNav:{
-        screen: TabNav,
+    MainPage:{
+        screen: MainPage,
         navigationOptions :{
             header:null,
+        },
+    },
+    ChatPage:{
+        screen:ChatPage,
+        navigationOptions :{
+            headerTitle: 'Devin',
+            headerStyle:{
+                backgroundColor: '#f8fdff',
+                height:40,
+                elevation: 0,//阴影
+            },
+            headerTitleStyle:{
+                alignSelf:'center'
+            },
+            headerRight:()=><Button></Button>,
+        },
+    },
+    AddFriend:{
+        screen:AddFriend,
+        navigationOptions :{
+            headerTitle: '添加好友',
+            headerStyle:{
+                backgroundColor: '#f8fdff',
+                height:40,
+                elevation: 0,//阴影
+            },
+            headerTitleStyle:{
+                alignSelf:'center'
+            },
+            headerRight:()=><Button></Button>,
         },
     }
 },
@@ -41,5 +77,4 @@ export default NavHome = StackNavigator({
         //headerTintColor:'#333333',
         gesturesEnabled:true,
     },
-    mode:'card',  
 });

@@ -14,7 +14,8 @@ export default class MainPage extends Component {
                         <Text>会话列表</Text>
                         <Button
                             title='添加好友'
-                            onPress={()=>alert(1)}/>
+                            onPress={()=>
+                                this.props.navigation.navigate('AddFriend')}/>
                     </View>
                 </View>
                 <TabNav navigation={this.props.navigation}/>
