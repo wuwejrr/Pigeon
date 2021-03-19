@@ -4,7 +4,7 @@ import Register from '../page/Register';
 import Login from '../page/Login';
 import MainPage from '../page/MainPage';
 import ChatPage from '../page/ChatPage';
-import AddFriend from '../page/AddFriend';
+import SearchFriend from '../page/SearchFriend';
 
 export default NavHome = StackNavigator({
     Login:{
@@ -49,8 +49,8 @@ export default NavHome = StackNavigator({
             headerRight:()=><Button></Button>,
         },
     },
-    AddFriend:{
-        screen:AddFriend,
+    SearchFriend:{
+        screen:SearchFriend,
         navigationOptions :{
             headerTitle: '添加好友',
             headerStyle:{
