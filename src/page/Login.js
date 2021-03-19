@@ -26,18 +26,19 @@ export default class Login extends Component {
         var username = this.state.inputedNum;
         var password = this.state.inputedPW;
         var jsonstr = { "username": username, "password": password};
-        //ws.apiws.send(apiutil('api','login',jsonstr));
-        //ws.apiws.onmessage = (msg)=>{
-            //ToastAndroid.show(msg.data ,ToastAndroid.SHORT);
-            //console.log(msg.data);
-            //var message = JSON.parse(msg.data);
-            if(1){
+        ws.apiws.send(apiutil('api','login',jsonstr));
+        ws.apiws.onmessage = (msg)=>{
+            ToastAndroid.show(msg.data ,ToastAndroid.SHORT);
+            console.log(msg.data);
+            var message = JSON.parse(msg.data);
+            console.log(message);
+            if(message.code == '200'){
                 ToastAndroid.show("登录成功" ,ToastAndroid.LONG);
                 this.props.navigation.navigate('MainPage');
             }else{
                 ToastAndroid.show("用户名或密码错误，请重新输入" ,ToastAndroid.SHORT);
             }
-        //};
+        };
     };
     render() {
         return (
