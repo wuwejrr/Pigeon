@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { View, Button, Text, StyleSheet, TextInput, FlatList } from 'react-native';
+import {ws} from '../wsconnect';
+import {apiutil} from '../util/ApiUtil';
 
-export default class AddFriend extends Component {
+export default class SearchFriend extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -12,10 +14,21 @@ export default class AddFriend extends Component {
         this.searchGroup = this.searchGroup.bind(this);
     }
     searchFriend(){
-        alert(1);
+        let jsonstr = {"keyword":this.state.keyword}
+        ws.apiws.send(apiutil('api','searchfriend',jsonstr));
+        ws.apiws.onmessage=(msg)=>{
+            console.log(msg.data);
+            var message = JSON.parse(msg.data);
+            console.log(message.data.result)
+            if(message.code == 200){
+                this.setState({
+                    friendarray: message.data.result,
+                });
+            }
+        }
     }
     searchGroup(){
-        alert(1);
+        console.log(this.state.friendarray);
     }
     render(){
         return(
@@ -35,7 +48,7 @@ export default class AddFriend extends Component {
                 <FlatList
                     data={this.state.friendarray}
                     renderItem={({item}) => 
-                            <Text style={styles.item}>{item.key}</Text>
+                            <Text style={styles.item}>{item.id}</Text>
                     }/>
             </View>
         );
