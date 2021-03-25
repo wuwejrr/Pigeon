@@ -44,10 +44,12 @@ export default class Login extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.inputArea}>
-                    <TextInput style={styles.textInputStyle}
+                    <TextInput 
+                        style={styles.textInputStyle}
                         placeholder={'请输入用户名'} 
                         onChangeText={(inputedNum)=>this.setState({inputedNum})}/>
-                    <TextInput style={styles.textInputStyle}
+                    <TextInput 
+                        style={styles.textInputStyle}
                         placeholder={'请输入密码'}
                         secureTextEntry
                         onChangeText={(inputedPW)=>this.setState({inputedPW})}/>
