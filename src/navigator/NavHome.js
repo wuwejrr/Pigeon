@@ -5,6 +5,7 @@ import Login from '../page/Login';
 import MainPage from '../page/MainPage';
 import ChatPage from '../page/ChatPage';
 import SearchFriend from '../page/SearchFriend';
+import PersonalPage from '../page/PersonalPage';
 
 export default NavHome = StackNavigator({
     Login:{
@@ -19,13 +20,9 @@ export default NavHome = StackNavigator({
             headerTitle: '注册',
             headerStyle:{
                 backgroundColor: '#f8fdff',
-                height:40,
+                height:43,
                 elevation: 0,//阴影
             },
-            headerTitleStyle:{
-                alignSelf:'center'
-            },
-            headerRight:()=><Button></Button>,
         }
     },
     MainPage:{
@@ -40,13 +37,9 @@ export default NavHome = StackNavigator({
             headerTitle: 'Devin',
             headerStyle:{
                 backgroundColor: '#f8fdff',
-                height:40,
+                height:43,
                 elevation: 0,//阴影
             },
-            headerTitleStyle:{
-                alignSelf:'center'
-            },
-            headerRight:()=><Button></Button>,
         },
     },
     SearchFriend:{
@@ -55,13 +48,20 @@ export default NavHome = StackNavigator({
             headerTitle: '添加好友',
             headerStyle:{
                 backgroundColor: '#f8fdff',
-                height:40,
+                height:43,
                 elevation: 0,//阴影
             },
-            headerTitleStyle:{
-                alignSelf:'center'
+        },
+    },
+    PersonalPage:{
+        screen:PersonalPage,
+        navigationOptions :{
+            headerTitle: '详细资料',
+            headerStyle:{
+                backgroundColor: '#f8fdff',
+                height:43,
+                elevation: 0,//阴影
             },
-            headerRight:()=><Button></Button>,
         },
     }
 },
@@ -72,9 +72,12 @@ export default NavHome = StackNavigator({
             vertical: 150,
             horizontal: 150
         } ,
-        //header:null,
         headerBackTitle:null,
         //headerTintColor:'#333333',
         gesturesEnabled:true,
+        headerTitleStyle:{
+            alignSelf:'center'
+        },
+        headerRight:()=><Button></Button>,
     },
 });
