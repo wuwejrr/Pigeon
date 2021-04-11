@@ -6,6 +6,7 @@ import MainPage from '../page/MainPage';
 import ChatPage from '../page/ChatPage';
 import SearchFriend from '../page/SearchFriend';
 import PersonalPage from '../page/PersonalPage';
+import SendRequest from '../page/SendRequest';
 
 export default NavHome = StackNavigator({
     Login:{
@@ -45,7 +46,7 @@ export default NavHome = StackNavigator({
     SearchFriend:{
         screen:SearchFriend,
         navigationOptions :{
-            headerTitle: '添加好友',
+            headerTitle: '搜索',
             headerStyle:{
                 backgroundColor: '#f8fdff',
                 height:43,
@@ -63,6 +64,17 @@ export default NavHome = StackNavigator({
                 elevation: 0,//阴影
             },
         },
+    },
+    SendRequest:{
+        screen:SendRequest,
+        navigationOptions:{
+            headerTitle: '添加好友',
+            headerStyle:{
+                backgroundColor: '#f8fdff',
+                height:43,
+                elevation: 0,//阴影
+            },
+        }
     }
 },
 {
