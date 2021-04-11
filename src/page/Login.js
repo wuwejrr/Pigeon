@@ -34,6 +34,13 @@ export default class Login extends Component {
             console.log(message);
             if(message.code == '200'){
                 ToastAndroid.show("登录成功" ,ToastAndroid.LONG);
+                var uid = message.data.uid;
+                console.log(uid);
+                storage.save({
+                    key: 'uid',  // 注意:请不要在key中使用_下划线符号!
+                    data: uid,
+                    expires: 1000 * 3600
+                });
                 this.props.navigation.navigate('MainPage');
             }else{
                 ToastAndroid.show("用户名或密码错误，请重新输入" ,ToastAndroid.SHORT);
