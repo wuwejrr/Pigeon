@@ -6,7 +6,6 @@ import {apiutil} from '../util/ApiUtil';
 export default class PersonalPage extends Component {
     constructor(props){
         super(props);
-        this.sendAddFriendRequest = this.sendAddFriendRequest.bind(this);
     }
     componentWillMount(){
         const { params } = this.props.navigation.state;
@@ -21,9 +20,6 @@ export default class PersonalPage extends Component {
             console.log(msg.data);
         }
     }
-    sendAddFriendRequest(){
-
-    }
     render(){
         return(
             <View style={styles.container}>
@@ -31,7 +27,8 @@ export default class PersonalPage extends Component {
                 <Text>{this.state.username}</Text>
                 <Button 
                     title='添加好友'
-                    onPress={this.sendAddFriendRequest()}
+                    onPress={()=>
+                        this.props.navigation.navigate('SendRequest', { username:this.state.username,id:this.state.id})}
                     />
             </View>
         );
