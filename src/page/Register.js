@@ -17,10 +17,10 @@ export default class Register extends Component {
         
     }
     componentWillMount(){
-        ws.apiws.onopen = ()=>{
-            console.log('on open is called');
-            console.log('websocket is open:' + this.apiws.readyState);
-        }
+        // ws.apiws.onopen = ()=>{
+        //     console.log('on open is called');
+        //     console.log('websocket is open:' + this.apiws.readyState);
+        // }
         // ws.apiws.onmessage = (msg)=>{
         //     ToastAndroid.show(msg.data ,ToastAndroid.SHORT);
         //     console.log(msg.data);
@@ -45,10 +45,10 @@ export default class Register extends Component {
         ws.apiws.send(apiutil('api','register',jsonstr));
         ws.apiws.onmessage = (msg)=>{
             //ToastAndroid.show(msg.data ,ToastAndroid.SHORT);
-            ToastAndroid.show("注册成功" ,ToastAndroid.LONG);
             console.log(msg.data);
             var message = JSON.parse(msg.data);
             if(message.code == 200){
+                ToastAndroid.show("注册成功" ,ToastAndroid.LONG);
                 this.props.navigation.navigate('Login');
             }
         };
