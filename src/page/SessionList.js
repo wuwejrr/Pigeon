@@ -1,5 +1,5 @@
 import React,{ PureComponent } from 'react';
-import { View,Text,FlatList } from 'react-native';
+import { View,Text,FlatList,Button,StyleSheet } from 'react-native';
 import { SessionListItem } from '../component/SessionListItem';
 
 export default class SessionList extends PureComponent{
@@ -22,18 +22,32 @@ export default class SessionList extends PureComponent{
     );
     render() {
         return(
-            <FlatList
-                keyExtractor={ this.keyExtractor }
-                data={[
-                    {username: 'Devin'},
-                ]}
-                renderItem={ this.renderItem }
-                />
+            <View style={styles.container}>
+                <FlatList
+                    keyExtractor={ this.keyExtractor }
+                    data={[
+                        {username: 'Devin'},
+                        {username: 'Devin2'},
+                        {username: 'Devin3'},
+                        {username: 'Devin3'},
+                        {username: 'Devin3'},
+                    ]}
+                    renderItem={ this.renderItem }
+                    />
+            </View>
         );
     }
 }
 
 
-// const styles = StyleSheet.create({
-    
-// });
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#f8fdff',
+    },
+    addfriendArea: {
+        paddingLeft:280,
+        backgroundColor: 'blue',
+        //marginLeft: 100
+    }
+});
